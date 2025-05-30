@@ -17,7 +17,7 @@ BLUE = (0, 100, 255)
 GREEN = (0, 255, 0)
 
 # World settings
-WORLD_WIDTH = 3100  # total level width
+WORLD_WIDTH = 6000  # total level width
 GRAVITY = 0.8
 JUMP_FORCE = -15
 
@@ -38,7 +38,16 @@ platforms = [
     pygame.Rect(1700, 300, 300, 20),
     pygame.Rect(2200, 350, 350, 20),
     pygame.Rect(2700, 300, 150, 20),
-    pygame.Rect(3000, 350, 200, 20)
+    pygame.Rect(3000, 350, 200, 20),
+    pygame.Rect(3300, 300, 250, 20),
+    pygame.Rect(3650, 200, 250, 20),
+    pygame.Rect(4000, 300, 300, 20),
+    pygame.Rect(4400, 250, 100, 20),
+    pygame.Rect(4700, 350, 200, 20),
+    pygame.Rect(5000, 300, 250, 20),
+    pygame.Rect(5300, 400, 150, 20),
+    pygame.Rect(5600, 350, 200, 20),
+    pygame.Rect(5900, 300, 50, 20)
 ]
 
 # Camera offset
@@ -78,8 +87,6 @@ while running:
         scroll_x = player.centerx - SCREEN_WIDTH // 2
     if player.centerx - scroll_x < 200:
         scroll_x = player.centerx - 200
-
-    # Clamp scroll to world bounds
     scroll_x = max(0, min(scroll_x, WORLD_WIDTH - SCREEN_WIDTH))
 
     # Collision detection

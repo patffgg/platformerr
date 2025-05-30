@@ -15,9 +15,10 @@ clock = pygame.time.Clock()
 WHITE = (255, 255, 255)
 BLUE = (0, 100, 255)
 GREEN = (0, 255, 0)
+RED = (255, 0, 0)
 
 # World settings
-WORLD_WIDTH = 6000  # total level width
+WORLD_WIDTH = 6000
 GRAVITY = 0.8
 JUMP_FORCE = -15
 
@@ -28,9 +29,9 @@ player_vel_y = 0
 player_speed = 5
 on_ground = False
 
-# Platforms (can add more)
+# Platforms
 platforms = [
-    pygame.Rect(0, SCREEN_HEIGHT - 40, WORLD_WIDTH, 40),  # Ground
+    pygame.Rect(0, SCREEN_HEIGHT - 40, WORLD_WIDTH, 40),
     pygame.Rect(300, 450, 200, 20),
     pygame.Rect(600, 350, 200, 20),
     pygame.Rect(950, 300, 150, 20),
@@ -48,6 +49,19 @@ platforms = [
     pygame.Rect(5300, 400, 150, 20),
     pygame.Rect(5600, 350, 200, 20),
     pygame.Rect(5900, 300, 50, 20)
+]
+
+# Enemies
+enemies = [
+    {"rect": pygame.Rect(1, 520, 40, 40), "dir": 1, "range": (1, 300)},
+    {"rect": pygame.Rect(300, 410, 40, 40), "dir": -1, "range": (300, 500)},
+    {"rect": pygame.Rect(950, 270, 40, 40), "dir": 1, "range": (950, 1100)},
+    {"rect": pygame.Rect(1600, 360, 40, 40), "dir": -1, "range": (1300, 1600)},
+    {"rect": pygame.Rect(2200, 310, 40, 40), "dir": 1, "range": (2200, 2550)},
+    {"rect": pygame.Rect(2700, 280, 40, 40), "dir": -1, "range": (2700, 2850)},
+    {"rect": pygame.Rect(3200, 310, 40, 40), "dir": 1, "range": (3200, 3400)},
+    {"rect": pygame.Rect(4200, 230, 40, 40), "dir": -1, "range": (4200, 4400)},
+    {"rect": pygame.Rect(4800, 290, 40, 40), "dir": 1, "range": (4800, 5000)},
 ]
 
 # Camera offset
@@ -71,7 +85,7 @@ while running:
         player_vel_x = -player_speed
     if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
         player_vel_x = player_speed
-    if keys[pygame.K_SPACE] and on_ground:
+    if keys[pygame.K_UP] and on_ground:
         player_vel_y = JUMP_FORCE
         on_ground = False
 
@@ -89,7 +103,7 @@ while running:
         scroll_x = player.centerx - 200
     scroll_x = max(0, min(scroll_x, WORLD_WIDTH - SCREEN_WIDTH))
 
-    # Collision detection
+    # Collision detection with platforms
     on_ground = False
     for platform in platforms:
         if player.colliderect(platform):
@@ -98,11 +112,30 @@ while running:
                 player_vel_y = 0
                 on_ground = True
 
-    # Draw platforms (apply scroll)
+    # Enemy movement
+    for enemy in enemies:
+        enemy["rect"].x += enemy["dir"] * 2
+        if enemy["rect"].x < enemy["range"][0] or enemy["rect"].x > enemy["range"][1]:
+            enemy["dir"] *= -1
+
+    # Check player collision with enemies
+    for enemy in enemies:
+        if player.colliderect(enemy["rect"]):
+            player.x, player.y = 100, 500
+            player_vel_y = 0
+            scroll_x = 0
+
+    # Draw platforms
     for platform in platforms:
         draw_rect = platform.copy()
         draw_rect.x -= scroll_x
         pygame.draw.rect(screen, GREEN, draw_rect)
+
+    # Draw enemies
+    for enemy in enemies:
+        draw_enemy = enemy["rect"].copy()
+        draw_enemy.x -= scroll_x
+        pygame.draw.rect(screen, RED, draw_enemy)
 
     # Draw player
     player_draw = player.copy()

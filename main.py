@@ -17,7 +17,7 @@ BLUE = (0, 100, 255)
 GREEN = (0, 255, 0)
 
 # World settings
-WORLD_WIDTH = 6000  # total level width
+WORLD_WIDTH = 3100  # total level width
 GRAVITY = 0.8
 JUMP_FORCE = -15
 
@@ -37,7 +37,8 @@ platforms = [
     pygame.Rect(1300, 400, 300, 20),
     pygame.Rect(1700, 300, 300, 20),
     pygame.Rect(2200, 350, 350, 20),
-    pygame.Rect(2400, 250, 250, 20)
+    pygame.Rect(2700, 300, 150, 20),
+    pygame.Rect(3000, 350, 200, 20)
 ]
 
 # Camera offset

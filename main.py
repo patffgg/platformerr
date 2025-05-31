@@ -21,6 +21,8 @@ RED = (255, 0, 0)
 BLACK = (0, 0, 0)
 GOLD = (255, 215, 0)
 
+level_complete_sound = pygame.mixer.Sound("level-win-6416.mp3")
+
 # World settings
 WORLD_WIDTH = 6000
 GRAVITY = 0.8
@@ -34,7 +36,7 @@ player_speed = 5
 on_ground = False
 
 # Goal (Mario-style end)
-goal = pygame.Rect(WORLD_WIDTH - 100, SCREEN_HEIGHT - 140, 50, 100)
+goal = pygame.Rect(WORLD_WIDTH - 100, 200, 50, 100)
 level_complete = False
 
 # Platforms
@@ -168,6 +170,7 @@ while running:
         font = pygame.font.SysFont(None, 80)
         text = font.render("LEVEL COMPLETE!", True, WHITE)
         screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, SCREEN_HEIGHT // 2 - 40))
+        level_complete_sound.play()
         pygame.display.flip()
         pygame.time.wait(3000)
         running = False

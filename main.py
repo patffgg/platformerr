@@ -55,13 +55,16 @@ platforms = [
 enemies = [
     {"rect": pygame.Rect(1, 520, 40, 40), "dir": 1, "range": (1, 300)},
     {"rect": pygame.Rect(300, 410, 40, 40), "dir": -1, "range": (300, 500)},
-    {"rect": pygame.Rect(950, 270, 40, 40), "dir": 1, "range": (950, 1100)},
-    {"rect": pygame.Rect(1600, 360, 40, 40), "dir": -1, "range": (1300, 1600)},
+    {"rect": pygame.Rect(950, 260, 40, 40), "dir": 1, "range": (950, 1100)},
+    {"rect": pygame.Rect(1700, 260, 40, 40), "dir": -1, "range": (1700, 2000)},
     {"rect": pygame.Rect(2200, 310, 40, 40), "dir": 1, "range": (2200, 2550)},
-    {"rect": pygame.Rect(2700, 280, 40, 40), "dir": -1, "range": (2700, 2850)},
-    {"rect": pygame.Rect(3200, 310, 40, 40), "dir": 1, "range": (3200, 3400)},
-    {"rect": pygame.Rect(4200, 230, 40, 40), "dir": -1, "range": (4200, 4400)},
-    {"rect": pygame.Rect(4800, 290, 40, 40), "dir": 1, "range": (4800, 5000)},
+    {"rect": pygame.Rect(2700, 260, 40, 40), "dir": -1, "range": (2700, 2850)},
+    {"rect": pygame.Rect(3300, 260, 40, 40), "dir": 1, "range": (3300, 3550)},
+    {"rect": pygame.Rect(4000, 260, 40, 40), "dir": -1, "range": (4000, 4300)},
+    {"rect": pygame.Rect(4400, 210, 40, 40), "dir": 1, "range": (4400, 4500)},
+    {"rect": pygame.Rect(5000, 260, 40, 40), "dir": -1, "range": (5000, 5250)},
+    {"rect": pygame.Rect(5300, 360, 40, 40), "dir": 1, "range": (5300, 5450)},
+    {"rect": pygame.Rect(5600, 310, 40, 40), "dir": -1, "range": (5600, 5750)},
 ]
 
 # Camera offset

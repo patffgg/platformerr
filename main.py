@@ -20,6 +20,7 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
 GOLD = (255, 215, 0)
+MAGENTA = (250, 50, 250)
 
 level_complete_sound = pygame.mixer.Sound("level-win-6416.mp3")
 player_dead = pygame.mixer.Sound("086398_game-die-81356.mp3")
@@ -78,7 +79,7 @@ enemies = [
     {"rect": pygame.Rect(4700, 310, 40, 40), "dir": -1, "range": (4700, 4860)},
     {"rect": pygame.Rect(5000, 260, 40, 40), "dir": -1, "range": (5000, 5210)},
     {"rect": pygame.Rect(5300, 360, 40, 40), "dir": 1, "range": (5300, 5410)},
-    {"rect": pygame.Rect(5600, 310, 40, 40), "dir": -1, "range": (5600, 5710)},
+    {"rect": pygame.Rect(5600, 310, 40, 40), "dir": -1, "range": (5600, 5750)},
 ]
 
 # Camera offset
@@ -88,7 +89,7 @@ scroll_x = 0
 running = True
 while running:
     clock.tick(FPS)
-    screen.fill(BLACK)
+    screen.fill(MAGENTA)
 
     # Input
     keys = pygame.key.get_pressed()

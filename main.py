@@ -5,7 +5,7 @@ import sys
 pygame.init()
 
 # Screen settings
-SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
+SCREEN_WIDTH, SCREEN_HEIGHT = 1000, 600
 FPS = 60
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Side-Scrolling Platformer")
@@ -16,6 +16,7 @@ WHITE = (255, 255, 255)
 BLUE = (0, 100, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+BLACK = (0, 0, 0)
 
 # World settings
 WORLD_WIDTH = 6000
@@ -74,12 +75,7 @@ scroll_x = 0
 running = True
 while running:
     clock.tick(FPS)
-    screen.fill(WHITE)
-
-    # Events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    screen.fill(BLACK)
 
     # Input
     keys = pygame.key.get_pressed()
@@ -88,9 +84,15 @@ while running:
         player_vel_x = -player_speed
     if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
         player_vel_x = player_speed
-    if keys[pygame.K_UP] and on_ground:
-        player_vel_y = JUMP_FORCE
-        on_ground = False
+
+    # Events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if (event.key == pygame.K_UP or event.key == pygame.K_SPACE) and on_ground:
+                player_vel_y = JUMP_FORCE
+                on_ground = False
 
     # Apply gravity
     player_vel_y += GRAVITY

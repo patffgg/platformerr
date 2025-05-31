@@ -11,12 +11,15 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Side-Scrolling Platformer")
 clock = pygame.time.Clock()
 
+
+
 # Colors
 WHITE = (255, 255, 255)
 BLUE = (0, 100, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
+GOLD = (255, 215, 0)
 
 # World settings
 WORLD_WIDTH = 6000
@@ -29,6 +32,10 @@ player_vel_x = 0
 player_vel_y = 0
 player_speed = 5
 on_ground = False
+
+# Goal (Mario-style end)
+goal = pygame.Rect(WORLD_WIDTH - 100, SCREEN_HEIGHT - 140, 50, 100)
+level_complete = False
 
 # Platforms
 platforms = [
@@ -130,6 +137,10 @@ while running:
             player_vel_y = 0
             scroll_x = 0
 
+    # Check collision with goal
+    if player.colliderect(goal):
+        level_complete = True
+
     # Draw platforms
     for platform in platforms:
         draw_rect = platform.copy()
@@ -142,12 +153,26 @@ while running:
         draw_enemy.x -= scroll_x
         pygame.draw.rect(screen, RED, draw_enemy)
 
+    # Draw goal
+    goal_draw = goal.copy()
+    goal_draw.x -= scroll_x
+    pygame.draw.rect(screen, GOLD, goal_draw)
+
     # Draw player
     player_draw = player.copy()
     player_draw.x -= scroll_x
     pygame.draw.rect(screen, BLUE, player_draw)
 
-    pygame.display.flip()
+    # Handle level completion
+    if level_complete:
+        font = pygame.font.SysFont(None, 80)
+        text = font.render("LEVEL COMPLETE!", True, WHITE)
+        screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, SCREEN_HEIGHT // 2 - 40))
+        pygame.display.flip()
+        pygame.time.wait(3000)
+        running = False
+    else:
+        pygame.display.flip()
 
 pygame.quit()
 sys.exit()

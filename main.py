@@ -22,6 +22,10 @@ BLACK = (0, 0, 0)
 GOLD = (255, 215, 0)
 
 level_complete_sound = pygame.mixer.Sound("level-win-6416.mp3")
+player_dead = pygame.mixer.Sound("086398_game-die-81356.mp3")
+background_music = pygame.mixer.Sound("suspence-background-25609.mp3")
+
+background_music.play(-1)
 
 # World settings
 WORLD_WIDTH = 6000
@@ -132,12 +136,14 @@ while running:
         if enemy["rect"].x < enemy["range"][0] or enemy["rect"].x > enemy["range"][1]:
             enemy["dir"] *= -1
 
+
     # Check player collision with enemies
     for enemy in enemies:
         if player.colliderect(enemy["rect"]):
             player.x, player.y = 100, 500
             player_vel_y = 0
             scroll_x = 0
+            player_dead.play()
 
     # Check collision with goal
     if player.colliderect(goal):

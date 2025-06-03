@@ -197,7 +197,7 @@ while running:
         current_level_index += 1
         if current_level_index >= len(levels):
             font = pygame.font.SysFont(None, 80)
-            text = font.render("GAMe COMPLETE!", True, WHITE)
+            text = font.render("GAME COMPLETE!", True, WHITE)
             screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, SCREEN_HEIGHT // 2 - 40))
             pygame.display.flip()
             pygame.time.wait(3000)

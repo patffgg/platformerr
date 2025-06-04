@@ -77,7 +77,7 @@ levels = [
             pygame.Rect(500, 400, 200, 20),
             pygame.Rect(800, 350, 250, 20),
             pygame.Rect(1200, 300, 200, 20),
-            pygame.Rect(1600, 250, 300, 20),
+            pygame.Rect(1500, 250, 300, 20),
             pygame.Rect(2000, 350, 250, 20),
             pygame.Rect(2300, 300, 200, 20),
             pygame.Rect(2600, 400, 200, 20),
@@ -92,12 +92,13 @@ levels = [
             pygame.Rect(5500, 300, 200, 20)
         ],
         "enemies": [
-            {"rect": pygame.Rect(200, 410, 40, 40), "dir": 1, "range": (200, 350)},
-            {"rect": pygame.Rect(800, 310, 40, 40), "dir": -1, "range": (800, 1050)},
-            {"rect": pygame.Rect(1600, 210, 40, 40), "dir": 1, "range": (1600, 1900)},
-            {"rect": pygame.Rect(2600, 360, 40, 40), "dir": -1, "range": (2600, 2800)},
-            {"rect": pygame.Rect(3300, 260, 40, 40), "dir": 1, "range": (3300, 3450)},
-            {"rect": pygame.Rect(4500, 260, 40, 40), "dir": 1, "range": (4500, 4750)}
+            {"rect": pygame.Rect(200, 410, 40, 40), "dir": 1, "range": (200, 310)},
+            {"rect": pygame.Rect(800, 310, 40, 40), "dir": -1, "range": (800, 1010)},
+            {"rect": pygame.Rect(1600, 210, 40, 40), "dir": 1, "range": (1600, 1860)},
+            {"rect": pygame.Rect(2600, 360, 40, 40), "dir": -1, "range": (2600, 2760)},
+            {"rect": pygame.Rect(3300, 260, 40, 40), "dir": 1, "range": (3300, 3410)},
+            {"rect": pygame.Rect(4500, 260, 40, 40), "dir": -1, "range": (4500, 4710)},
+            {"rect": pygame.Rect(5200, 310, 40, 40), "dir": 1, "range": (5200, 5410)}
         ],
         "goal": pygame.Rect(WORLD_WIDTH - 100, 180, 50, 100)
     }

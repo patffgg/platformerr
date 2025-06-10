@@ -106,10 +106,10 @@ levels = [
     {
     "platforms": [
     pygame.Rect(0, SCREEN_HEIGHT - 40, WORLD_WIDTH, 40),
-    pygame.Rect(300, 400, 250, 20),
-    pygame.Rect(600, 350, 150, 20),
-    pygame.Rect(900, 300, 250, 20),
-    pygame.Rect(1200, 350, 150, 20),
+    pygame.Rect(300, 400, 350, 20),
+    pygame.Rect(550, 350, 200, 20),
+    pygame.Rect(800, 300, 250, 20),
+    pygame.Rect(1100, 350, 150, 20),
     pygame.Rect(1600, 350, 300, 20),
     pygame.Rect(2000, 350, 250, 20),
     pygame.Rect(2300, 300, 200, 20),
